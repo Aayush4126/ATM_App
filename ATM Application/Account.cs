@@ -23,9 +23,9 @@ namespace ATM_Application
                 throw new ArgumentException("Initial balance must be greater or equal to 0");
             }
 
-            if (interestRate < 0 || interestRate > 100 )
+            if (interestRate < 0 || interestRate > 3 )
             {
-                throw new ArgumentException("Interest rate must be between 0 and 100");
+                throw new ArgumentException("Interest rate must be between 0 and 3");
             }
 
             //Initilizing the properties

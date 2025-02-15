@@ -107,7 +107,7 @@ namespace ATM_Application
                         Console.WriteLine("Initial balance must be greater than or equal to 0.");
                         continue;
                     }
-                    break; // Exit loop if initial balance is valid
+                    break; 
                 }
                 catch (FormatException)
                 {
@@ -123,12 +123,12 @@ namespace ATM_Application
                 try
                 {
                     interestRate = double.Parse(Console.ReadLine());
-                    if (interestRate < 0 || interestRate > 100)
+                    if (interestRate < 0 || interestRate > 3)
                     {
-                        Console.WriteLine("Interest rate must be between 0 and 100.");
+                        Console.WriteLine("Interest rate must be between 0 and 3.");
                         continue;
                     }
-                    break; // Exit loop if interest rate is valid
+                    break;
                 }
                 catch (FormatException)
                 {
@@ -141,10 +141,12 @@ namespace ATM_Application
 
             try
             {
-                // Now create the account with validated inputs
+                // Creating the account with validated inputs
                 Account newAccount = new Account(accountNumber, initialBalance, interestRate, accountHolderName);
                 bank.AddAccount(newAccount);
                 Console.WriteLine("\nAccount created successfully.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
             catch (ArgumentException ex)
             {
@@ -153,9 +155,9 @@ namespace ATM_Application
         }
 
 
-        /// Prompts the user to enter an account number, validates the input, 
-        /// checks if the account exists in the system, and if found, allows access to the account menu.
-        /// If the account is not found or input is invalid, the user is asked to try again.
+        // Prompts the user to enter an account number, validates the input, 
+        // checks if the account exists in the system, and if found, allows access to the account menu.
+        // If the account is not found or input is invalid, the user is asked to try again.
         private void SelectAccount()
         {
             Console.WriteLine("=====================================");
@@ -194,8 +196,7 @@ namespace ATM_Application
         private void AccountMenu(Account account)
         {
             while (true)
-            {
-
+            {   
                 Console.WriteLine("=====================================");
                 Console.WriteLine($"   ACCOUNT MENU - {account.AccountHolderName}   ");
                 Console.WriteLine("=====================================");
@@ -212,7 +213,7 @@ namespace ATM_Application
                 switch (choice)
                 {
                     case "1":
-                        Console.WriteLine($"\n\nCurrent Balance: {account.Balance}");
+                        Console.WriteLine($"\n\nCurrent Balance: {account.Balance}\n");
                         break;
 
                     case "2":
